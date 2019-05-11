@@ -8,7 +8,8 @@
     "build": "webpack -p --config ./webpack.config.js --progress",
     "build:tsc": "tsc",
     "heroku-postbuild": "npm run build",
-    "dev": "node ./dist/bundle.js"
+    "dev": "node ./dist/bundle.js",
+    "start": "node ./dist/bundle.js"
   },
   "author": "",
   "license": "ISC",
