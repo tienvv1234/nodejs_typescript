@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as helmet from 'helmet';
 import * as compression from 'compression';
 import * as cors from 'cors';
-export class RoutesConfig {
+export class ApplicationConfig {
   static init(application: express.Application): void {
     application.use(bodyParser.urlencoded({ extended: true }));
     application.use(bodyParser.json());

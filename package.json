@@ -10,6 +10,7 @@
     "heroku-postbuild": "npm run build",
     "dev": "node ./dist/bundle.js",
     "start": "node ./dist/bundle.js",
+    "start:tsc": "node ./dist/app.js",
     "clean": "rimraf dist",
     "tslint": "tslint -c tslint.json -p tsconfig.json"
   },
@@ -21,7 +22,8 @@
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
-    "helmet": "^3.18.0"
+    "helmet": "^3.18.0",
+    "pg": "^7.11.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
