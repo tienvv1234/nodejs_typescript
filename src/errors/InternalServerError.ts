@@ -1,8 +1,7 @@
-import { BaseError } from './BaseError'
+import { BaseError } from './BaseError';
 
 export class InternalServerError extends BaseError {
-    constructor(message: string) {
-        console.log(7)
-        super(message, 105, InternalServerError.name);
-    }
+  constructor(message: string) {
+    super(message, 105, InternalServerError.name);
+  }
 }

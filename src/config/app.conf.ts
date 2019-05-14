@@ -11,6 +11,6 @@ export class ApplicationConfig {
     application.use(helmet());
     application.use(compression());
     application.use(cors());
-    application.use(errorHandler)
+    application.use(errorHandler);
   }
 }

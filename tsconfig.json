@@ -7,11 +7,6 @@
     "moduleResolution": "node",
     "sourceMap": true
   },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "./node_modules",
-    "src/tests"
-  ]
+  "include": ["./src/**/*", "src/knexfile.ts"],
+  "exclude": ["./node_modules", "src/tests"]
 }
