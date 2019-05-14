@@ -1,5 +1,7 @@
 import * as Knex from 'knex';
-const knexConfig = require('../../knexfile');
+import { InternalServerError } from '../errors/InternalServerError';
+import { logger } from '../service/logger';
+const knexConfig = require('../knexfile');
 
 // export const config = {
 //     client: 'pg',
@@ -17,13 +19,12 @@ const knexConfig = require('../../knexfile');
 
 export class DBConfig {
   static async init(): Promise<void> {
-    const instance: Knex = Knex(knexConfig.dbConfig);
     try {
+      const instance: Knex = Knex(knexConfig.dbConfig);
       await instance.raw('select 1');
-      console.log('Connected to database - OK`');
     } catch (error) {
-      console.log(`Failed to connect to database: ${error}`);
-      process.exit(1);
+      logger.error(error);
+      throw new InternalServerError(`Failed to connect to database: ${error}`);
     }
   }
 }

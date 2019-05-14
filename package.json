@@ -7,12 +7,16 @@
     "test:unit": "mocha --require ts-node/register src/tests/unit/**/*.ts",
     "build": "npm run clean && webpack -p --config ./webpack.config.js --progress",
     "build:tsc": "tsc -p tsconfig.json",
+    "build:watch": "tsc -p tsconfig.json --watch",
     "heroku-postbuild": "npm run build",
     "dev": "node ./dist/bundle.js",
     "start": "node ./dist/bundle.js",
     "start:tsc": "node ./dist/app.js",
     "clean": "rimraf dist",
-    "tslint": "tslint -c tslint.json -p tsconfig.json"
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "debug": "node --inspect-brk --trace-warnings ./dist/app.js",
+    "start:debug": "concurrently \"npm run build:watch\" \"npm run debug\"",
+    "start:dev": "concurrently \"npm run build:watch\" \"npm run start:tsc\""
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +27,9 @@
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "helmet": "^3.18.0",
-    "pg": "^7.11.0"
+    "moment": "^2.24.0",
+    "pg": "^7.11.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
@@ -37,6 +43,7 @@
     "@types/mocha": "^5.2.6",
     "@types/supertest": "^2.0.7",
     "chai": "^4.2.0",
+    "concurrently": "^4.1.0",
     "knex": "^0.16.7",
     "mocha": "^6.1.4",
     "objection": "^1.6.8",
