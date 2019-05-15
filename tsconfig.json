@@ -3,10 +3,18 @@
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "commonjs",
-    "target": "es6",
+    "target": "es5",
     "moduleResolution": "node",
     "sourceMap": true
   },
-  "include": ["./src/**/*", "src/knexfile.ts"],
-  "exclude": ["./node_modules", "src/tests"]
+  "include": [
+    "./src/**/*",
+    "src/knexfile.ts",
+    "src/migrations",
+    "src/seeds"
+  ],
+  "exclude": [
+    "./node_modules",
+    "src/tests"
+  ]
 }

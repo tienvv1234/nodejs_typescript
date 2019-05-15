@@ -1,5 +1,5 @@
+require('ts-node/register');
 const dotenv = require('dotenv').config();
-
 module.exports = {
   client: process.env.client || 'pg',
   useNullAsDefault: true,
@@ -12,11 +12,9 @@ module.exports = {
   migrations: {
     directory: __dirname + '/migrations',
     tableName: 'migrations',
-    extensions: ['js', 'ts'] // both should be set by default
   },
   seeds: {
     directory: __dirname + '/seeds',
     tableName: 'seeds',
-    extensions: ['js', 'ts'] // both should be set by default
   }
 };
