@@ -13,3 +13,10 @@ npm install ts-loader, typescript compiler, webpack, webpack-cli, @types/express
 The --knexfile knexfile.ts won't be necessary if you use knexfile.js since the typescript cannot provide any type checking for you for the config file.
 
 `knex migrate:make --knexfile src\knexfile.ts -x ts migrate name`
+
+Apply the migrations to both databases:
+
+$ knex migrate:latest --env development
+$ knex migrate:latest --env test
+
+knex seed:make shows_seed --env development

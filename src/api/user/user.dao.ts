@@ -1,16 +1,13 @@
 import { User } from './user.model';
 import { InternalServerError } from '../../errors/InternalServerError';
-import { DBConfig } from '../../config/db.conf';
 export class UserDAO {
+  constructor() {}
 
-    constructor() {
+  public async getAllUser() {
+    try {
+      return await User.query();
+    } catch (error) {
+      throw new InternalServerError(error);
     }
-
-    public async getAllUser() {
-        try {
-            return await User.query(DBConfig.Instance);
-        } catch (error) {
-            throw new InternalServerError(error);
-        }
-    }
+  }
 }

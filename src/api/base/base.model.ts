@@ -1,7 +1,7 @@
-import * as Objection from 'objection';
+import { Model } from 'objection';
 
-export class BaseModel<T> extends Objection.Model {
-    creationDate: Date;
-    updatedOn: Date;
-    deletionDate: Date;
+export class BaseModel<T> extends Model {
+  creationDate: Date;
+  updatedOn: Date;
+  deletionDate: Date;
 }

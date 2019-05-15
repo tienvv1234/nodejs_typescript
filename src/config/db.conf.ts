@@ -1,7 +1,10 @@
 import * as Knex from 'knex';
+import { Model } from 'objection';
 import { InternalServerError } from '../errors/InternalServerError';
-import * as Objection from 'objection';
-const knexConfig = require('../knexfile');
+
+const knexConfig = require('../knexfile')[
+  process.env.NODE_ENV || 'development'
+];
 
 export class DBConfig {
   private static _instance: Knex = null;
@@ -10,6 +13,7 @@ export class DBConfig {
     try {
       this._instance = Knex(knexConfig);
       await this._instance.raw('select 1');
+      Model.knex(this._instance);
     } catch (error) {
       throw new InternalServerError(`Failed to connect to database: ${error}`);
     }
@@ -21,7 +25,6 @@ export class DBConfig {
         this.init();
       }
       return this._instance;
-
     } catch (error) {
       throw error;
     }
