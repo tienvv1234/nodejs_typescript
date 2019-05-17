@@ -6,9 +6,23 @@
     "target": "es5",
     "moduleResolution": "node",
     "sourceMap": true,
-    "types": ["node", "mocha", "chai", "chai-subset"],
-    "typeRoots": ["./node_modules/@types"]
+    "types": [
+      "node",
+      "mocha",
+      "chai"
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
   },
-  "include": ["./src/**/*", "src/knexfile.ts", "src/migrations", "src/seeds"],
-  "exclude": ["./node_modules", "src/tests"]
+  "include": [
+    "./src/**/*",
+    "src/knexfile.ts",
+    "src/migrations",
+    "src/seeds"
+  ],
+  "exclude": [
+    "./node_modules",
+    "src/tests"
+  ]
 }
