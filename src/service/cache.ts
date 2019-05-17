@@ -1,6 +1,4 @@
 import * as redis from "redis";
-import { promises } from "fs";
-import { reject } from "bluebird";
 
 export class cache {
     static client: redis.RedisClient;
