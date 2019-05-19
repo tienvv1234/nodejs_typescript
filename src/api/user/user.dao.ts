@@ -1,12 +1,12 @@
 import { User } from './user.model';
 import { InternalServerError } from '../../errors/InternalServerError';
-import { cache } from '../../service/cache';
+import { Cache } from '../../service/cache';
 export class UserDAO {
-  constructor() { }
+  constructor() {}
 
   public async getAllUser() {
     try {
-      return await User.query().runBefore(cache.getCache('dsfds'));
+      return await User.query().runBefore(Cache.getCache('dsfds'));
     } catch (error) {
       throw new InternalServerError(error);
     }

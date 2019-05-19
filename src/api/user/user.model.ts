@@ -1,11 +1,11 @@
-import { BaseModel } from "../base/base.model";
+import { BaseModel } from '../base/base.model';
 
-export class User extends BaseModel<User>{
-    readonly id: number;
-    username: string;
-    password: string;
+export class User extends BaseModel<User> {
+  readonly id: number;
+  username: string;
+  password: string;
 
-    // profile: UserProfile; // <--- where UserProfile is the related model
+  // profile: UserProfile; // <--- where UserProfile is the related model
 
-    static tableName = 'users';
+  static tableName = 'users';
 }

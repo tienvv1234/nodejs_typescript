@@ -11,8 +11,6 @@ describe('ErrorHandler', () => {
     const error = new InternalServerError(message);
     const next = sinon.spy();
     errorHandler(error, req, res, next);
-    return expect(
-      res.json.withArgs(error)
-    ).to.be.calledOnce
+    return expect(res.json.withArgs(error)).to.be.calledOnce;
   });
 });
