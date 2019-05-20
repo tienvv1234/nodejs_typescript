@@ -1,14 +1,15 @@
 import { User } from '../user.model';
+import { IsString } from "class-validator";
 
 export class UserDTO {
 
-    public id: number;
-    public firstName: string;
-    public lastName: string;
+    @IsString()
+    public username: string;
+    @IsString()
+    public password: string;
 
-    constructor(user: User) {
-        this.id = user.id;
-        this.firstName = user.username;
-        this.lastName = user.password;
+    constructor(username: string, password: string) {
+        this.username = username;
+        this.password = password;
     }
 }

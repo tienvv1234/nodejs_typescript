@@ -1,8 +1,8 @@
 import * as express from 'express';
 import { UserController } from './user.controller';
 import { UserDAO } from './user.dao';
-import { validation } from '../../middleware/validation';
 import { UserDTO } from './dto/user';
+import { validation } from '../../middleware/validation';
 export class UserRouter {
   private userController: UserController;
 

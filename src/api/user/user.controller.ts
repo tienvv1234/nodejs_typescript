@@ -13,7 +13,8 @@ export class UserController {
     userDAO: UserDAO
   ) {
     try {
-      let users: any = await Cache.getCache('user1');
+      // let users: any = await Cache.getCache('user1');
+      let users: any = await userDAO.getAllUser();
       if (!users) {
         users = await userDAO.getAllUser();
         // await cache.client.set('user', JSON.stringify(users));
@@ -21,7 +22,7 @@ export class UserController {
       }
 
       const userDTOs = users.map((user: User) => {
-        return new UserDTO(user);
+        return new UserDTO(user.username, user.password);
       });
       res.json(userDTOs);
     } catch (error) {

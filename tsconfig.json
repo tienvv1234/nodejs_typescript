@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "strictPropertyInitialization": false,
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "commonjs",

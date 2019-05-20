@@ -6,8 +6,8 @@ export class UserDAO {
 
   public async getAllUser() {
     try {
-      return await User.query().runBefore(Cache.getCache.bind(Cache, 'dsfds'));
-      // return await User.query();
+      // return await User.query().runBefore(Cache.getCache.bind(Cache, 'dsfds'));
+      return await User.query();
     } catch (error) {
       throw new InternalServerError(UserDAO.name + ' ' + error.message);
     }
