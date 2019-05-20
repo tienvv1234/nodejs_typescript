@@ -4,7 +4,7 @@ import { UserDTO } from './dto/user';
 import { User } from './user.model';
 import { Cache } from '../../service/cache';
 export class UserController {
-  constructor() {}
+  constructor() { }
 
   public async getAll(
     req: express.Request,

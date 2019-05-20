@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as helmet from 'helmet';
 import * as compression from 'compression';
 import * as cors from 'cors';
-import { errorHandler } from '../errors/ErrorHandler';
+import { errorHandler } from '../errors/errorHandler';
 import morgan = require('morgan');
 export class ApplicationConfig {
   static init(application: express.Application): void {
@@ -15,7 +15,7 @@ export class ApplicationConfig {
     application.use(errorHandler);
     application.use(
       morgan('dev', {
-        skip: function(req, res) {
+        skip: function (req, res) {
           return res.statusCode < 400;
         },
         stream: process.stderr
@@ -24,7 +24,7 @@ export class ApplicationConfig {
 
     application.use(
       morgan('dev', {
-        skip: function(req, res) {
+        skip: function (req, res) {
           return res.statusCode >= 400;
         },
         stream: process.stdout

@@ -6,9 +6,9 @@ import * as express from 'express';
 export class Config {
   static async init(app: express.Application, router: express.Router) {
     try {
+      Routes.init(app, router);
       ApplicationConfig.init(app);
       await DBConfig.init();
-      Routes.init(app, router);
       await Cache.init();
     } catch (error) {
       throw error;
