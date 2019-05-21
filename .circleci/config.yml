@@ -19,6 +19,9 @@ jobs: # a collection of steps
       - checkout
 
       - run:
+          command: ls /home/circleci/nodejs_typescript/
+
+      - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
 
