@@ -15,7 +15,7 @@ jobs: # a collection of steps
 
     working_directory: ~/nodejs_typescript
 
-    step: # a collection of executable commands
+    steps: # a collection of executable commands
       - checkout
 
       - run:
