@@ -1,7 +1,6 @@
 version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
-    working_directory: ~/nodejs_typescript
     docker: # run the steps with Docker
       - image: circleci/node:10.15.0
       # Specify service dependencies here if necessary
@@ -13,6 +12,9 @@ jobs: # a collection of steps
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           POSTGRES_DB: testdb
+
+    working_directory: ~/nodejs_typescript
+
     step: # a collection of executable commands
       - checkout
 
