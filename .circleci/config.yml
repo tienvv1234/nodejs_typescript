@@ -34,7 +34,7 @@ jobs: # a collection of steps
       - save_cache:
         key: dependency-cache-{{ checksum "package.json "}}
         paths:
-          - node_modules
+          - ./node_modules
 
       - run:
         name: Knex Migrations
