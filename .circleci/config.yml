@@ -32,7 +32,7 @@ jobs: # a collection of steps
           command: npm install
 
       - save_cache:
-        key: dependency-cache-{{ checksum "package.json "}}
+        keys: dependency-cache-{{ checksum "package.json "}}
         paths:
           - node_modules
 
