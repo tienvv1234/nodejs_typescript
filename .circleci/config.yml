@@ -32,9 +32,9 @@ jobs: # a collection of steps
           command: npm install
 
       - save_cache:
-        paths:
-          - ./node_modules
-        key: dependency-cache-{{ checksum "package.json "}}
+          paths:
+            - ./node_modules
+          key: dependency-cache-{{ checksum "package.json "}}
 
       - run:
         name: Knex Migrations
