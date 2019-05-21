@@ -47,13 +47,13 @@ jobs: # a collection of steps
 
       - run:
           name: Knex Migrations
-          command: knex migrate:latest --knexfile src\knexfile.ts --env test
+          command: knex migrate:latest --knexfile src/knexfile.ts --env test
           environment:
             NODE_ENV: test
 
       - run:
           name: Knex seeds
-          command: knex seed:run --knexfile src\knexfile.ts --env test
+          command: knex seed:run --knexfile src/knexfile.ts --env test
           environment:
             NODE_ENV: test
 
