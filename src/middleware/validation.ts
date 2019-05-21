@@ -17,5 +17,4 @@ export function validation<T>(type: any): express.RequestHandler {
             next();
         }
     }
-
 }
