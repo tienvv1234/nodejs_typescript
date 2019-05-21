@@ -1,0 +1,61 @@
+version: 2 # use CircleCI 2.0
+jobs: # a collection of steps
+  build: # runs not using Workflows must have a `build` job as entry point
+    working_directory: ~/nodejs_typescript
+    docker: # run the steps with Docker
+      - image: circleci/node:10.15.0
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      - image: circleci/redis:latest
+      - image: mdillon/postgis
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testdb
+    step: # a collection of executable commands
+      - checkout
+
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+
+      # Download and cache dependencies
+      - restore_cache: # special step to restore the dependency cache
+        # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+        keys: dependency-cache-{{ checksum "package.json" }}
+
+      - run:
+          name: install-npm-wee
+          command: npm install
+
+      - save_cache:
+        key: dependency-cache-{{ checksum "package.json "}}
+        paths:
+          - node_modules
+
+      - run:
+        name: Knex Migrations
+        command: knex migrate:latest --knexfile src\knexfile.ts --env test
+        environment:
+          NODE_ENV: test
+
+      - run:
+        name: Knex seeds
+        command: knex seed:run --knexfile src\knexfile.ts --env test
+        environment:
+          NODE_ENV: test
+
+      - run:
+          name: Run Typecheck
+          command: npm run typecheck
+
+      - run:
+          name: Run tslint
+          command: npm run tslint
+
+      - run: # run tests
+          name: test
+          command: npm run test
+          environment:
+            NODE_ENV: test
