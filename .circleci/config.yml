@@ -42,6 +42,10 @@ jobs: # a collection of steps
           key: dependency-cache-{{ checksum "package.json"}}
 
       - run:
+          name: install-global-knex
+          command: sudo npm install -g knex
+
+      - run:
           name: Knex Migrations
           command: knex migrate:latest --knexfile src\knexfile.ts --env test
           environment:
