@@ -19,6 +19,7 @@ jobs: # a collection of steps
       - checkout
 
       - run:
+          name: check-path
           command: ls /home/circleci/nodejs_typescript/
 
       - run:
