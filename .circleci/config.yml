@@ -50,6 +50,10 @@ jobs: # a collection of steps
           command: knex migrate:latest --knexfile src/knexfile.ts --env test
           environment:
             NODE_ENV: test
+            POSTGRES_HOST: 'postgres'
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: testdb
             
       - run:
           name: Knex seeds
