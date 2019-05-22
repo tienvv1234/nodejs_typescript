@@ -9,7 +9,6 @@ jobs: # a collection of steps
       - image: circleci/redis:latest
       - image: mdillon/postgis
         environment:
-          POSTGRES_HOST: 'postgres'
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           POSTGRES_DB: testdb
@@ -50,10 +49,7 @@ jobs: # a collection of steps
           name: Knex Migrations
           command: knex migrate:latest --knexfile src/knexfile.ts --env test
           environment:
-            POSTGRES_HOST: 'postgres'
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: password
-            POSTGRES_DB: testdb
+            NODE_ENV: test
             
       - run:
           name: Knex seeds
