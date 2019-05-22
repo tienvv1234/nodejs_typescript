@@ -50,7 +50,7 @@ jobs: # a collection of steps
           command: knex migrate:latest --knexfile src/knexfile.ts --env test
           environment:
             NODE_ENV: test
-            POSTGRES_HOST: 'postgres://postgres:password@127.0.0.1:5432/testdb'
+            POSTGRES_HOST: 'postgres://postgres:password@localhost:5432/testdb'
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: password
             POSTGRES_DB: testdb
