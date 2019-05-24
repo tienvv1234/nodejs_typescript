@@ -48,9 +48,9 @@ jobs: # a collection of steps
       - run:
           name: install-global-knex
           command: sudo npm install -g knex
-          
-      - run: echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list
-      - run: wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+
+      - run: sudo echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list
+      - run: sudo wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client-9.6 -y
 
