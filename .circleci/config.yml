@@ -52,8 +52,8 @@ jobs: # a collection of steps
 
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client-9.6 -y
-      - run: sudo -u postgres psql -p 5433 -c "create user testuser with password 'testuser';"
-      - run: sudo -u postgres psql -p 5433 -c "alter user testuser with superuser;"
+      - run: -U postgres psql -h localhost -p 5432 -c "create user testuser with password 'testuser';"
+      - run: -U postgres psql -h localhost -p 5432 -c "alter user testuser with superuser;"
 
       - run: 
          name: Create database
