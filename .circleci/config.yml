@@ -3,6 +3,10 @@ jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
     docker: # run the steps with Docker
       - image: circleci/node:10.15.0
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: testdb
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -50,10 +54,7 @@ jobs: # a collection of steps
           command: knex migrate:latest --knexfile src/knexfile.ts --env test
           environment:
             NODE_ENV: test
-            POSTGRES_HOST: 'postgres'
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: password
-            POSTGRES_DB: testdb
+            POSTGRES_HOST: 'postgres://postgres:password@localhost:5432/testdb'
             
       - run:
           name: Knex seeds
