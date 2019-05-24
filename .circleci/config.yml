@@ -4,7 +4,7 @@ jobs: # a collection of steps
     docker: # run the steps with Docker
       - image: circleci/node:10.15.0
         environment:
-            POSTGRES_HOST: 'postgresql://postgres:password@127.0.0.1:5433/testdb'
+            POSTGRES_HOST: 'postgresql://postgres:password@localhost:5433/testdb'
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: password
             POSTGRES_DB: testdb
@@ -55,7 +55,7 @@ jobs: # a collection of steps
 
       - run: 
          name: Create database
-         command: psql -U postgres -h 127.0.0.1 -p 5433 -tc "SELECT 1 FROM pg_database WHERE datname = 'testdb'" | grep -q 1 || psql -U postgres -h 127.0.0.1 -p 5433 -c "CREATE DATABASE testdb"
+         command: psql -U postgres -h localhost -p 5433 -tc "SELECT 1 FROM pg_database WHERE datname = 'testdb'" | grep -q 1 || psql -U postgres -h localhost -p 5433 -c "CREATE DATABASE testdb"
 
       - run:
           name: Knex Migrations
