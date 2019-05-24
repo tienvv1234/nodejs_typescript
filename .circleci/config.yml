@@ -4,7 +4,7 @@ jobs: # a collection of steps
     docker: # run the steps with Docker
       - image: circleci/node:10.15.0
         environment:
-            POSTGRES_HOST: 'postgresql://postgres:password@localhost:5432/testdb'
+            POSTGRES_HOST: 'postgresql://postgres@localhost:5432/testdb'
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: password
             POSTGRES_DB: testdb
