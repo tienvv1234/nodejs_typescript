@@ -5,18 +5,18 @@ jobs: # a collection of steps
       - image: circleci/node:10.15.0
         environment:
             POSTGRES_HOST: 'postgresql://postgres:password@localhost:5432/testdb'
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: password
-            POSTGRES_DB: testdb
+            POSTGRES_USER: postgres1
+            POSTGRES_PASSWORD: password1
+            POSTGRES_DB: testdb1
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/redis:latest
       - image: mdillon/postgis
         environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: testdb
+          POSTGRES_USER: postgres2
+          POSTGRES_PASSWORD: password2
+          POSTGRES_DB: testdb2
 
     working_directory: ~/nodejs_typescript
 
