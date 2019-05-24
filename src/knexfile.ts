@@ -25,10 +25,10 @@ module.exports = {
     client: 'pg',
     useNullAsDefault: true,
     connection: {
-      host: process.env.host,
-      user: process.env.user,
-      password: process.env.password,
-      database: process.env.database
+      host: process.env.POSTGRES_HOST,
+      user: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DB
     },
     migrations: {
       directory: __dirname + '/migrations',
@@ -43,10 +43,10 @@ module.exports = {
     client: process.env.client || 'pg',
     useNullAsDefault: true,
     connection: {
-      host: process.env.host,
-      user: process.env.user,
-      password: process.env.password,
-      database: process.env.database
+      host: process.env.POSTGRES_HOST,
+      user: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DB
     },
     migrations: {
       directory: __dirname + '/migrations',
