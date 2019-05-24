@@ -48,10 +48,13 @@ jobs: # a collection of steps
       - run:
           name: install-global-knex
           command: sudo npm install -g knex
+      
+      - run: apt-get update
+      - run: apt-get install postgresql-client-9.6 -y
 
       - run: 
          name: Create database
-         command: postgres psql -p 5432 -c "create database testdb;"
+         command: psql -U postgres -h localhost -p 5432 -c "create database testdb;"
 
       - run:
           name: Knex Migrations
