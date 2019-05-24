@@ -55,7 +55,7 @@ jobs: # a collection of steps
 
       - run: 
          name: Create database
-         command: psql -U postgres -h localhost -p 5432 -tc "SELECT 1 FROM pg_database WHERE datname = 'testdb'" | grep -q 1 || psql -U postgres -h localhost -p 5432 -c "CREATE DATABASE testdb"
+         command: psql -U postgres1 -h localhost -p 5432 -tc "SELECT 1 FROM pg_database WHERE datname = 'testdb'" | grep -q 1 || psql -U postgres1 -h localhost -p 5432 -c "CREATE DATABASE testdb"
 
       - run:
           name: Knex Migrations
