@@ -5,18 +5,18 @@ jobs: # a collection of steps
       - image: circleci/node:10.15.0
         environment:
             POSTGRES_HOST: 'postgresql://postgres:password@localhost:5432/testdb'
-            POSTGRES_USER: postgres1
-            POSTGRES_PASSWORD: password1
-            POSTGRES_DB: testdb1
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: testdb
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/redis:latest
       - image: mdillon/postgis
         environment:
-          POSTGRES_USER: postgres2
-          POSTGRES_PASSWORD: password2
-          POSTGRES_DB: testdb2
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testdb
 
     working_directory: ~/nodejs_typescript
 
@@ -52,6 +52,10 @@ jobs: # a collection of steps
 
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client-9.6 -y
+
+      - run: 
+         name: Create database
+         command: psql -U postgres -h localhost -p 5432 -tc "SELECT 1 FROM pg_database WHERE datname = 'testdb'" | grep -q 1 || psql -U postgres -h localhost -p 5432 -c "CREATE DATABASE testdb"
 
       - run:
           name: Knex Migrations
