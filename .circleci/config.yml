@@ -4,9 +4,9 @@ jobs: # a collection of steps
     docker: # run the steps with Docker
       - image: circleci/node:10.15.0
         environment:
-            POSTGRES_HOST: 'postgresql://testuser:testuser@localhost:5432/testdb'
-            POSTGRES_USER: testuser
-            POSTGRES_PASSWORD: testuser
+            POSTGRES_HOST: 'postgresql://postgres:password@localhost:5432/testdb'
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
             POSTGRES_DB: testdb
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -14,8 +14,8 @@ jobs: # a collection of steps
       - image: circleci/redis:latest
       - image: mdillon/postgis
         environment:
-          POSTGRES_USER: testuser
-          POSTGRES_PASSWORD: testuser
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
           POSTGRES_DB: testdb
 
     working_directory: ~/nodejs_typescript
@@ -57,9 +57,6 @@ jobs: # a collection of steps
          name: Create database
          command: psql -U postgres -h localhost -p 5432 -tc "SELECT 1 FROM pg_database WHERE datname = 'testdb'" | grep -q 1 || psql -U postgres -h localhost -p 5432 -c "CREATE DATABASE testdb"
 
-      - run: sudo psql -U postgres -h localhost -p 5432 -c "create user testuser with password 'testuser';"
-      - run: sudo psql -U postgres -h localhost -p 5432 -c "alter user testuser with superuser;"
-      
       - run:
           name: Knex Migrations
           command: knex migrate:latest --knexfile src/knexfile.ts --env test
