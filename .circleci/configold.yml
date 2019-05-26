@@ -4,9 +4,10 @@ jobs: # a collection of steps
     docker: # run the steps with Docker
       - image: circleci/node:10.15.0
         environment:
-            POSTGRES_HOST: 'localhost'
+            POSTGRES_HOST: 'postgresql://postgres:password@localhost:5432/testdb'
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: password
+            POSTGRES_DB: testdb
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -51,18 +52,16 @@ jobs: # a collection of steps
 
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client-9.6 -y
-      
+
       - run: 
          name: Create database
          command: psql -U postgres -h localhost -p 5432 -tc "SELECT 1 FROM pg_database WHERE datname = 'testdb'" | grep -q 1 || psql -U postgres -h localhost -p 5432 -c "CREATE DATABASE testdb"
 
-      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Knex Migrations
           command: knex migrate:latest --knexfile src/knexfile.ts --env test
           environment:
             NODE_ENV: test
-            DATABASE_URL: "postgres://postgres:password@localhost:5432/testdb"
             
       - run:
           name: Knex seeds
