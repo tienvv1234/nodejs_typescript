@@ -59,7 +59,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "concurrently": "^4.1.0",
-    "knex": "^0.16.7",
+    "knex": "^0.16.1",
     "mocha": "^6.1.4",
     "nodemon": "^1.19.0",
     "objection": "^1.6.8",
