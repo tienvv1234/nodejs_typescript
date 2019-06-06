@@ -1,7 +1,6 @@
 require('ts-node/register');
 const path = require('path');
 const dotenv = require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
-console.log('process.env', process.env)
 module.exports = {
   test: {
     client: process.env.client || 'pg',

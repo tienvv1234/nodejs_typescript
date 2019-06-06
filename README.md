@@ -58,3 +58,6 @@ $ knex migrate:latest --env development
 $ knex migrate:latest --env test
 
 knex seed:make shows_seed --env development
+
+
+run CircleCI CLI: `circleci local execute --job jobname`
