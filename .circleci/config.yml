@@ -51,7 +51,7 @@ jobs: # a collection of steps
           command: sudo npm install -g knex
 
       # - run: sudo apt-get update
-      # - run: sudo apt-get install postgresql-client-9.6 -y
+      - run: sudo apt-get install postgresql-client-9.6 -y
       
       - run: 
          name: Create database
