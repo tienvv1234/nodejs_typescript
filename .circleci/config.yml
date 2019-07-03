@@ -90,6 +90,9 @@ jobs: # a collection of steps
     steps:
       - checkout
       - run:
+          name: release-production
+          command: bash ./release-production.sh
+      - run:
           name: Log in to Heroku
           command: bash ./login-heroku.sh
       - run:
@@ -119,6 +122,7 @@ workflows:
           filters:
             branches:
               only:
+                - develop
                 - master
           # You should probably be running
           # some checks before you deploy
