@@ -1,4 +1,4 @@
-echo "${CIRCLE_BRANCH}"
+echo "$CIRCLE_BRANCH"
 case $CIRCLE_BRANCH in
     "develop")
         export ENVIRONMENT="dev"
