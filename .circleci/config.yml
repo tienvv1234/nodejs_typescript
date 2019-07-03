@@ -101,7 +101,7 @@ jobs: # a collection of steps
             sudo ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku
       - run:
           name: Deploy heroku app
-          command: bash infra/deploy-heroku.sh
+          command: bash deploy-heroku.sh
       - run:
           name: Set BUILD_NUM and COMPARE_URL on Heroku to CIRCLECI values
           command: |
