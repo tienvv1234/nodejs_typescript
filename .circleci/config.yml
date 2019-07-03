@@ -109,19 +109,19 @@ jobs: # a collection of steps
             heroku config:set BUILD_NUM=${CIRCLE_BUILD_NUM} COMPARE_URL=${CIRCLE_COMPARE_URL} -a ${HEROKU_APP}
 
 workflows:
-    version: 2
-    ci:
+  version: 2
+  ci:
     jobs:
-        - build
-        - deploy:
-            filters:
-            branches:
-                only:
+      - build
+      - deploy:
+          filters:
+          branches:
+              only:
                 - develop
                 - master
-            # You should probably be running
-            # some checks before you deploy
-            # requires:
-            #  - test
-            #  - lint
+          # You should probably be running
+          # some checks before you deploy
+          # requires:
+          #  - test
+          #  - lint
             
