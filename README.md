@@ -61,3 +61,29 @@ knex seed:make shows_seed --env development
 
 
 run CircleCI CLI: `circleci local execute --job jobname`
+
+# Brew service
+- brew services list
+- brew services start/stop/restart <name-of-service>
+
+# psql postgres
+
+# create a new user inside the psql terminal
+# password must be enclosed with quotes
+CREATE ROLE newuser WITH LOGIN PASSWORD 'password';
+# make the newuser capable of creating, editing, and deleting databases
+ALTER ROLE newuser CREATEDB;
+# Quit psql terminal to be able to login using newuser
+\q
+# Go back to psql terminal, with `newuser` as user
+psql postgres -U newuser
+# Observe that from `postgres=#`, the psql terminal instead shows `postgres=>`
+
+# Create Database
+postgres=> CREATE DATABASE super_awesome_application;
+
+\list: lists all the databases in Postgres
+\connect: connect to a specific database
+\dt: list the tables in the currently connected database
+
+`https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb`

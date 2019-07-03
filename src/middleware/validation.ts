@@ -4,8 +4,8 @@ import * as express from 'express';
 import { ValidationRouterError } from '../errors/ValidationRouterError';
 
 export function validation<T>(type: any): express.RequestHandler {
-  const validator = new Validator();
   return (req, res, next) => {
+    const validator = new Validator();
     const input = deserialize(type, req.body);
     const errors = validator.validateSync(input);
     if (errors.length > 0) {
