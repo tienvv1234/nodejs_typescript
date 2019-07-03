@@ -1,4 +1,3 @@
-import { InternalServerError } from './InternalServerError';
 import { logger } from '../service/logger';
 import { ValidationRouterError } from './ValidationRouterError';
 
