@@ -12,6 +12,6 @@ then
     sudo tar -xvzf heroku-linux-amd64.tar.gz -C /usr/local/lib
     sudo ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku
 fi
-source infra/scripts/setup-env.sh
+source setup-env.sh
 heroku config:set BUILD_NUM=${CIRCLE_BUILD_NUM} COMPARE_URL=${CIRCLE_COMPARE_URL} -a ${HEROKU_APP}
 All together w
