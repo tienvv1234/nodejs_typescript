@@ -110,12 +110,12 @@ jobs: # a collection of steps
 
 workflows:
   version: 2
-  ci:
+  build_and_deploy:
     jobs:
       - build
       - deploy:
           filters:
-          branches:
+            branches:
               only:
                 - develop
                 - master
