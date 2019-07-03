@@ -119,7 +119,6 @@ workflows:
           filters:
             branches:
               only:
-                - develop
                 - master
           # You should probably be running
           # some checks before you deploy
