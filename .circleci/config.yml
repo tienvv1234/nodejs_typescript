@@ -84,7 +84,7 @@ jobs: # a collection of steps
           command: npm run test
           environment:
             NODE_ENV: test
-deploy:
+  deploy:
     docker:
         - image: circleci/node:10.15.0
     steps:
@@ -124,3 +124,4 @@ workflows:
             # requires:
             #  - test
             #  - lint
+            
