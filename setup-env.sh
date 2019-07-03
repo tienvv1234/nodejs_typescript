@@ -1,7 +1,7 @@
 case $CIRCLE_BRANCH in
     "develop")
         export ENVIRONMENT="dev"
-        export HEROKU_APP="nodetypescript"
+        export HEROKU_APP="nodetypescriptdevelop"
         ;;
     "master")
         export ENVIRONMENT="production"
