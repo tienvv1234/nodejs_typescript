@@ -89,9 +89,9 @@ jobs: # a collection of steps
       - image: circleci/node:10.15.0
     steps:
       - checkout
-      # - run:
-      #     name: release-production
-      #     command: bash ./release-production.sh
+      - run:
+          name: release-production
+          command: bash ./release-production.sh
       - run:
           name: Log in to Heroku
           command: bash ./login-heroku.sh
