@@ -1,9 +1,9 @@
 set -e
 set -u
 source ./setup-env.sh
-echo "Pushing branch ${CIRCLE_BRANCH} to app ${HEROKU_APP}"
+echo "Pushing branch ${BRANCH} to app ${HEROKU_APP}"
 git remote add heroku https://git.heroku.com/${HEROKU_APP}.git
-git push heroku ${CIRCLE_BRANCH}:master
+git push heroku ${BRANCH}:master
 
 if [ ! -L /usr/local/bin/heroku ];
 then

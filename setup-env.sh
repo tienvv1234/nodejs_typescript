@@ -1,5 +1,5 @@
-echo "$CIRCLE_BRANCH"
-case $CIRCLE_BRANCH in
+echo "$BRANCH"
+case $BRANCH in
     "develop")
         export ENVIRONMENT="dev"
         export HEROKU_APP="nodetypescriptdevelop"
