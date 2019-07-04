@@ -88,3 +88,6 @@ postgres=> CREATE DATABASE super_awesome_application;
 \dt: list the tables in the currently connected database
 
 `https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb`
+
+#CircleCi
+environment: CIRCLE_BRANCH (this variable will be config in CDCL and this is the branch CI run)
