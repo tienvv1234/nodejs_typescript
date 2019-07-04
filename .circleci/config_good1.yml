@@ -1,0 +1,86 @@
+version: 2 # use CircleCI 2.0
+jobs: # a collection of steps
+  build: # runs not using Workflows must have a `build` job as entry point
+    docker: # run the steps with Docker
+      - image: circleci/node:10.15.0
+        environment:
+            POSTGRES_HOST: 'localhost'
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: testdb
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      - image: circleci/redis:latest
+      - image: mdillon/postgis
+        # environment:
+        #   POSTGRES_USER: postgres
+        #   POSTGRES_PASSWORD: password
+        #   POSTGRES_DB: testdb
+
+    working_directory: ~/nodejs_typescript
+
+    steps: # a collection of executable commands
+      - checkout
+
+      # - run:
+      #     name: check-path
+      #     command: ls /home/circleci/nodejs_typescript/
+
+      # - run:
+      #     name: update-npm
+      #     command: 'sudo npm install -g npm@latest'
+
+      # Download and cache dependencies
+      - restore_cache: # special step to restore the dependency cache
+          # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+          key: dependency-cache-{{ checksum "package.json" }}
+
+      - run:
+          name: install-npm-wee
+          command: npm install
+
+      - save_cache:
+          name: Save-Cache
+          paths:
+            - './node_modules'
+          key: dependency-cache-{{ checksum "package.json"}}
+
+      - run:
+          name: install-global-knex
+          command: sudo npm install -g knex
+
+      - run: sudo apt-get update
+      - run: sudo apt-get install postgresql-client-9.6 -y
+      
+      - run: 
+         name: Create database
+         command: psql -U postgres -h localhost -p 5432 -tc "SELECT 1 FROM pg_database WHERE datname = 'testdb'" | grep -q 1 || psql -U postgres -h localhost -p 5432 -c "CREATE DATABASE testdb"
+
+      # - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Knex Migrations
+          command: knex migrate:latest --knexfile src/knexfile.ts --env test
+          # environment:
+          #   NODE_ENV: test
+            # DATABASE_URL: "postgres://postgres:password@localhost:5432/testdb"
+            
+      - run:
+          name: Knex seeds
+          command: knex seed:run --knexfile src/knexfile.ts --env test
+          environment:
+            NODE_ENV: test
+
+      - run:
+          name: Run Typecheck
+          command: npm run typecheck
+
+      - run:
+          name: Run tslint
+          command: npm run tslint
+
+      - run: # run tests
+          name: test
+          command: npm run test
+          environment:
+            NODE_ENV: test
