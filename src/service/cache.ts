@@ -3,7 +3,7 @@ import * as redis from 'redis';
 export class Cache {
   static client: redis.RedisClient;
 
-  static async init(): Promise<void> {
+  static init(): void {
     this.client = redis.createClient({
       port: Number(process.env.redisPort),
       host: process.env.redisHost

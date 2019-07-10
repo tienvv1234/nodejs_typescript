@@ -90,4 +90,7 @@ postgres=> CREATE DATABASE super_awesome_application;
 `https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb`
 
 #CircleCi
-environment: CIRCLE_BRANCH (this variable will be config in CDCL and this is the branch CI run)
+environment: CIRCLE_BRANCH (this variable will be config in CDCL and this is the branch CI run), CIRCLE_BUILD_NUM, CIRCLE_COMPARE_URL
+
+get current branch 
+git branch | grep \* | cut -d ' ' -f2
