@@ -45,7 +45,8 @@
     "redis": "^2.8.0",
     "winston": "^3.2.1",
     "knex": "^0.16.5",
-    "objection": "^1.6.8"
+    "objection": "^1.6.8",
+    "ts-node": "^8.3.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
@@ -76,7 +77,7 @@
     "source-map-support": "^0.5.12",
     "supertest": "^4.0.2",
     "ts-loader": "^6.0.0",
-    "ts-node": "^8.1.0",
+    "ts-node": "^8.3.0",
     "tslint": "^5.16.0",
     "typescript": "^3.4.5",
     "webpack": "^4.31.0",
