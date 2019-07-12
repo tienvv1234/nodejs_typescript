@@ -42,7 +42,8 @@
     "pg": "^7.11.0",
     "redis": "^2.8.0",
     "winston": "^3.2.1",
-    "knex": "^0.16.5"
+    "knex": "^0.16.5",
+    "objection": "^1.6.8",
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
@@ -68,7 +69,6 @@
     "faker": "^4.1.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.19.0",
-    "objection": "^1.6.8",
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0",
     "source-map-support": "^0.5.12",
