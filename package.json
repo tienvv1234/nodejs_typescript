@@ -15,7 +15,7 @@
     "build:watch": "tsc -p tsconfig.json --watch",
     "heroku-postbuild": "npm run build",
     "dev": "node ./dist/bundle.js",
-    "start": "node ./dist/app.js",
+    "start": "node dist/app.js",
     "start:tsc": "nodemon ./dist/app.js",
     "clean": "rimraf dist",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
