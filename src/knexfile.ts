@@ -9,7 +9,11 @@ module.exports = {
       host: process.env.POSTGRES_HOST,
       user: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DB
+      database: process.env.POSTGRES_DB,
+    },
+    pool: {
+      min: 2,
+      max: 10
     },
     migrations: {
       directory: __dirname + '/migrations',
@@ -29,6 +33,10 @@ module.exports = {
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB
     },
+    pool: {
+      min: 2,
+      max: 10
+    },
     migrations: {
       directory: __dirname + '/migrations',
       tableName: 'migrations'
@@ -46,6 +54,10 @@ module.exports = {
       user: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB
+    },
+    pool: {
+      min: 2,
+      max: 10
     },
     migrations: {
       directory: __dirname + '/migrations',

@@ -88,3 +88,17 @@ postgres=> CREATE DATABASE super_awesome_application;
 \dt: list the tables in the currently connected database
 
 `https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb`
+
+#CircleCi
+environment: CIRCLE_BRANCH (this variable will be config in CDCL and this is the branch CI run), CIRCLE_BUILD_NUM, CIRCLE_COMPARE_URL
+
+get current branch 
+git branch | grep \* | cut -d ' ' -f2
+
+
+``` mocha.opts
+--require source-map-support/register
+--full-trace
+--bail
+src/tests/unit/**/*.spec.ts src/tests/unit/**/*.spec.tsx
+```

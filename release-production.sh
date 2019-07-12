@@ -10,16 +10,13 @@ git pull
 echo "Checking out to '${RELEASE_TO}' branch and pulling latest"
 git checkout ${RELEASE_TO} 
 git pull
-# read -p "Are you sure you want to merge '${RELEASE_FROM}' into '${RELEASE_TO}'? (y/n)" -n 1 -r
-# echo
+read -p "Are you sure you want to merge '${RELEASE_FROM}' into '${RELEASE_TO}'? (y/n)" -n 1 -r
+echo
 
-# if [[ $REPLY =~ ^[Yy]$ ]]
-# then
-#     git merge ${RELEASE_FROM} --ff-only
-#     git push
-# fi
-
-git merge ${RELEASE_FROM} --ff-only
-git push
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    git merge ${RELEASE_FROM} --ff-only
+    git push
+fi
 
 git checkout ${CURRENT_BRANCH}

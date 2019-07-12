@@ -14,3 +14,4 @@ then
 fi
 source setup-env.sh
 heroku config:set BUILD_NUM=${CIRCLE_BUILD_NUM} COMPARE_URL=${CIRCLE_COMPARE_URL} -a ${HEROKU_APP}
+heroku knex migrate:latest --knexfile src/knexfile.ts --env production

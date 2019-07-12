@@ -3,11 +3,15 @@ import * as redis from 'redis';
 export class Cache {
   static client: redis.RedisClient;
 
-  static async init(): Promise<void> {
-    this.client = redis.createClient({
-      port: Number(process.env.redisPort),
-      host: process.env.redisHost
-    });
+  static init(): void {
+    if(process.env.NODE_ENV === 'production'){
+      this.client = redis.createClient(process.env.REDIS_URL);
+    }else{
+      this.client = redis.createClient({
+        port: Number(process.env.redisPort),
+        host: process.env.redisHost
+      });
+    }
   }
 
   static createCache(key: string, value: any): any {
