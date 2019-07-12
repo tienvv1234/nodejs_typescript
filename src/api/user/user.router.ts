@@ -13,8 +13,11 @@ export class UserRouter {
   init(router: express.Router) {
     router
       .route('/users')
-      .get(validation(UserDTO), (req, res, next) =>
+      .get((req, res, next) =>
         this.userController.getAll(req, res, next, new UserDAO())
       );
+      // .get(validation(UserDTO), (req, res, next) =>
+      //   this.userController.getAll(req, res, next, new UserDAO())
+      // );
   }
 }
