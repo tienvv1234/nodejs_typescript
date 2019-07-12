@@ -94,3 +94,11 @@ environment: CIRCLE_BRANCH (this variable will be config in CDCL and this is the
 
 get current branch 
 git branch | grep \* | cut -d ' ' -f2
+
+
+``` mocha.opts
+--require source-map-support/register
+--full-trace
+--bail
+src/tests/unit/**/*.spec.ts src/tests/unit/**/*.spec.tsx
+```

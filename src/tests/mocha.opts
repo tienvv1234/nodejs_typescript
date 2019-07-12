@@ -1,4 +1,3 @@
 --require source-map-support/register
 --full-trace
 --bail
-src/tests/unit/**/*.spec.ts src/tests/unit/**/*.spec.tsx
