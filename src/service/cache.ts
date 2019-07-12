@@ -5,7 +5,7 @@ export class Cache {
 
   static init(): void {
     if(process.env.NODE_ENV === 'production'){
-      this.client = redis.createClient(process.env.REDIS_URL)
+      this.client = redis.createClient(process.env.REDIS_URL);
     }else{
       this.client = redis.createClient({
         port: Number(process.env.redisPort),
