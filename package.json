@@ -43,7 +43,7 @@
     "redis": "^2.8.0",
     "winston": "^3.2.1",
     "knex": "^0.16.5",
-    "objection": "^1.6.8",
+    "objection": "^1.6.8"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
