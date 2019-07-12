@@ -3,9 +3,14 @@ import { Model } from 'objection';
 import { logger } from '../service/logger';
 // import { InternalServerError } from '../errors/InternalServerError';
 
-const knexConfig = require('../knexfile')[
-  process.env.NODE_ENV || 'development'
-];
+let knexConfig: any;
+if(process.env.NODE_ENV === 'production'){
+  knexConfig = process.env.DATABASE_URL;
+}else{
+  knexConfig = require('../knexfile')[
+    process.env.NODE_ENV || 'development'
+  ];
+} 
 
 export class DBConfig {
   private static _instance: Knex = null;

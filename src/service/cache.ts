@@ -4,10 +4,14 @@ export class Cache {
   static client: redis.RedisClient;
 
   static init(): void {
-    this.client = redis.createClient({
-      port: Number(process.env.redisPort),
-      host: process.env.redisHost
-    });
+    if(process.env.NODE_ENV === 'production'){
+      this.client = redis.createClient(process.env.REDIS_URL)
+    }else{
+      this.client = redis.createClient({
+        port: Number(process.env.redisPort),
+        host: process.env.redisHost
+      });
+    }
   }
 
   static createCache(key: string, value: any): any {
