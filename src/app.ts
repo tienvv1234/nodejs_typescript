@@ -12,13 +12,3 @@ try {
 } catch (error) {
   logger.error(error);
 }
-
-// Config.init(app, express.Router())
-//   .then(() => {
-//     app.listen(PORT, () => {
-//       console.log(`Server running on ${PORT}`);
-//     });
-//   })
-//   .catch(error => {
-//     logger.error(error);
-//   });
