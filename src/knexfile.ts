@@ -1,15 +1,18 @@
 require('ts-node/register');
 const path = require('path');
-const dotenv = require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+const dotenv = require('dotenv').config({
+  path: path.resolve(__dirname, '../.env')
+});
 module.exports = {
   test: {
+    debug: true,
     client: process.env.client || 'pg',
     useNullAsDefault: true,
     connection: {
       host: process.env.POSTGRES_HOST,
       user: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DB,
+      database: process.env.POSTGRES_DB
     },
     pool: {
       min: 2,
@@ -25,6 +28,7 @@ module.exports = {
     }
   },
   development: {
+    debug: true,
     client: 'pg',
     useNullAsDefault: true,
     connection: {
@@ -47,6 +51,7 @@ module.exports = {
     }
   },
   production: {
+    debug: false,
     client: process.env.client || 'pg',
     useNullAsDefault: true,
     connection: process.env.DATABASE_URL,

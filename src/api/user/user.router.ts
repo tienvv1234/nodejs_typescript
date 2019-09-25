@@ -16,8 +16,19 @@ export class UserRouter {
       .get((req, res, next) =>
         this.userController.getAll(req, res, next, new UserDAO())
       );
-      // .get(validation(UserDTO), (req, res, next) =>
-      //   this.userController.getAll(req, res, next, new UserDAO())
-      // );
+    router
+      .route('/users/:id')
+      .get((req, res, next) =>
+        this.userController.getUserInfoById(req, res, next, new UserDAO())
+      );
+    router
+      .route('/users/')
+      .post(validation(UserDTO), (req, res, next) =>
+        this.userController.getUserInfoById(req, res, next, new UserDAO())
+      );
+
+    // .get(validation(UserDTO), (req, res, next) =>
+    //   this.userController.getAll(req, res, next, new UserDAO())
+    // );
   }
 }
